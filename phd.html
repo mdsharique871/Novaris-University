@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PhD Program</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: rgb(11, 11, 11);
+        }
+        nav {
+            display: flex;
+            justify-content: center;
+            background-color: #333;
+        }
+        nav a {
+            color: white;
+            padding: 14px 20px;
+            text-decoration: none;
+            text-align: center;
+        }
+        nav a:hover {
+            background-color: #ddd;
+            color: black;
+        }
+        .container {
+            padding: 20px;
+            background-color: greenyellow;
+        }
+        .course-section, .fees-section, .admission-section {
+            margin-bottom: 40px;
+        }
+        .form-container {
+            background-color: #f4f4f4;
+            padding: 20px;
+            border-radius: 8px;
+            background-color: green;
+            
+        }
+        input[type="text"], input[type="email"], textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            background-color: lightgreen;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 15px 20px;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+        input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>PhD Program Admissions</h1>
+        <p>Transforming Ideas into Groundbreaking Research</p>
+    </header>
+
+    <nav>
+        <a href="#about">About</a>
+        <a href="#courses">Courses</a>
+        <a href="#fees">Fees</a>
+        <a href="#admissions">Admissions</a>
+        <a href="#contact">Contact Us</a>
+    </nav>
+
+    <div class="container">
+
+        <section id="about" class="course-section">
+            <h2>PhD Program Overview</h2>
+            <p>Our PhD program offers an innovative research environment with opportunities for students to specialize in cutting-edge fields such as Computer Science, Artificial Intelligence, Data Science, and more. The course spans up to 4 years, providing rigorous training and the freedom to explore academic curiosities.</p>
+        </section>
+
+        <section id="courses" class="course-section">
+            <h2>Courses & Specializations</h2>
+            <p>Select your area of interest below to explore course details:</p>
+            <ul>
+                <li>Computer Science</li>
+                <li>Data Science</li>
+                <li>Artificial Intelligence</li>
+                <li>Biotechnology</li>
+                <li>Physics</li>
+            </ul>
+        </section>
+
+        <section id="fees" class="fees-section">
+            <h2>Fees Structure</h2>
+            <p>Our fees structure is designed to be transparent and affordable:</p>
+            <table border="1">
+                <tr>
+                    <th>Category</th>
+                    <th>Tuition Fee</th>
+                    <th>Additional Fees</th>
+                    <th>Total Fee</th>
+                </tr>
+                <tr>
+                    <td>Local Students</td>
+                    <td>$5000/year</td>
+                    <td>$2000/year</td>
+                    <td>$7000/year</td>
+                </tr>
+                <tr>
+                    <td>International Students</td>
+                    <td>$8000/year</td>
+                    <td>$3000/year</td>
+                    <td>$11,000/year</td>
+                </tr>
+            </table>
+        </section>
+
+        <section id="admissions" class="admission-section">
+            <h2>Admission Form</h2>
+            <div class="form-container">
+                <!-- Change form action to submit_form.php -->
+                <form action="phd.php" method="POST">
+                    <label for="name">Full Name</label>
+                    <input type="text" id="name" name="name" required>
+
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="research">Research Interests</label>
+                    <textarea id="research" name="research" rows="4" required></textarea>
+
+                    <label for="degree">Previous Degree</label>
+                    <input type="text" id="degree" name="degree" required>
+
+                    <input type="submit" value="Submit Application">
+                </form>
+            </div>
+        </section>
+
+        <section id="contact" class="contact-section">
+            <h2>Contact Us</h2>
+            <p>If you have any questions, feel free to reach out:</p>
+            <address>
+                University Address: 123 Research Street, City, Country<br>
+                Phone: +1 234 567 890<br>
+                Email: admissions@university.com
+            </address>
+        </section>
+
+    </div>
+
+</body>
+</html>

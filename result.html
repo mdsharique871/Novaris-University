@@ -1,0 +1,383 @@
+<!--DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Results and Certificate Validation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        select, input[type="text"], input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #qrcode {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+        .template-selection {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Course Results & Certificate Validation</h1>
+    </header>
+
+    <div class="container">
+        <!-- Results Section -->
+        <!--section class="form-container">
+            <h2>View Your Results</h2>
+            <form id="resultsForm" action="result.php" method="POST">
+                <label for="course">Select Course:</label>
+                <select id="course" name="course" required>
+                    <option value="phd">PhD</option>
+                    <option value="data_science">Data Science</option>
+                    <option value="ai">Artificial Intelligence</option>
+                    <option value="biotechnology">Biotechnology</option>
+                    <!-- Add more courses as needed -->
+                <!--/select-->
+
+                <!--label for="year">Select Year:</label>
+                <select id="year" name="year" required>
+                    <option value="2022">2022</option>
+                    <option value="2023">2023</option>
+                    <option value="2024">2024</option>
+                    <!-- Add more years as needed -->
+                <!--/select>
+
+                <input type="submit" value="View Results">
+            </form>
+        </section-->
+
+        <!-- Certificate Validation Section -->
+        <!--section class="form-container">
+            <h2>Certificate Validation</h2>
+            <form id="validateForm" action="certificate.php" method="POST">
+                <label for="applicationNumber">Enter Application Number or Mobile Number:</label>
+                <input type="text" id="applicationNumber" name="applicationNumber" required>
+
+                <input type="submit" value="Validate Certificate">
+            </form>
+
+            <div id="certificateDetails" style="display:none;">
+                <h3>Your Certificate Details</h3>
+                <p><strong>Name:</strong> <span id="validatedName"></span></p>
+                <p><strong>Course:</strong> <span id="validatedCourse"></span></p>
+                <p><strong>Session Year:</strong> <span id="validatedYear"></span></p>
+
+                <!-- QR Code -->
+                <div id="qrcode"></div>
+            </div>
+        </section-->
+
+        <!-- Certificate Template Customization -->
+        <!--section class="form-container template-selection">
+            <h2>Choose Your Certificate Template</h2>
+            <form action="certificate.php" method="POST">
+                <label for="template">Select Template:</label>
+                <select id="template" name="template" required>
+                    <option value="template1">Template 1</option>
+                    <option value="template2">Template 2</option>
+                    <option value="template3">Template 3</option>
+                    <! Add more templates as needed -->
+                <!--/select>
+                <input type="submit" value="Customize Certificate">
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Handle form submission for certificate validation
+        $('#validateForm').submit(function(event) {
+            event.preventDefault();
+
+            var applicationNumber = $('#applicationNumber').val();
+
+            // Simulate fetching data from the server
+            // This should be replaced by an actual AJAX call to a PHP script
+            $.ajax({
+                url: 'validate_certificate.php',
+                type: 'POST',
+                data: { applicationNumber: applicationNumber },
+                success: function(response) {
+                    // Assuming the response is a JSON object with name, course, and session year
+                    var data = JSON.parse(response);
+                    if (data.status === 'success') {
+                        $('#validatedName').text(data.name);
+                        $('#validatedCourse').text(data.course);
+                        $('#validatedYear').text(data.year);
+
+                        // Show the certificate details
+                        $('#certificateDetails').show();
+
+                        // Generate QR Code
+                        $('#qrcode').empty();
+                        $('#qrcode').qrcode({
+                            text: 'Certificate: ' + data.name + ' | ' + data.course + ' | ' + data.year
+                        });
+                    } else {
+                        alert('Invalid Application Number');
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html-->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Course Results and Certificate Validation</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.qrcode/1.0/jquery.qrcode.min.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        header {
+            background-color: #4CAF50;
+            padding: 20px;
+            text-align: center;
+            color: white;
+        }
+        .container {
+            padding: 20px;
+        }
+        .form-container {
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+        }
+        select, input[type="text"], input[type="submit"], table {
+            width: 100%;
+            padding: 10px;
+            margin: 8px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+        }
+        #qrcode {
+            margin-top: 20px;
+            padding: 10px;
+            border: 1px solid #ddd;
+            display: inline-block;
+        }
+        table {
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 10px;
+            text-align: center;
+        }
+        .template-selection {
+            margin-top: 30px;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Course Results & Certificate Validation</h1>
+    </header>
+
+    <div class="container">
+        <!-- Results Section -->
+        <section class="form-container">
+            <h2>View Course Results</h2>
+            <form id="resultsForm">
+                <label for="course">Select Course:</label>
+                <select id="course" name="course">
+                    <option value="php">PHP</option>
+                    <option value="data_science">Data Science</option>
+                    <option value="ai">Artificial Intelligence</option>
+                    <option value="biotechnology">Biotechnology</option>
+                </select>
+
+                <label for="year">Select Year:</label>
+                <select id="year" name="year">
+                    <option value="2024">2024</option>
+                    <option value="2025">2025</option>
+                    <option value="2026">2026</option>
+                </select>
+
+                <input type="button" value="View Results" onclick="viewResults()">
+            </form>
+
+            <div id="resultsTable" style="display:none;">
+                <h3>Results for Course: <span id="selectedCourse"></span> - Session: <span id="selectedYear"></span></h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Session</th>
+                            <th>Course</th>
+                        </tr>
+                    </thead>
+                    <tbody id="resultsTableBody"></tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Certificate Validation Section -->
+        <section class="form-container">
+            <h2>Certificate Validation</h2>
+            <form id="validateForm">
+                <label for="applicationNumber">Enter Application Number or Mobile Number:</label>
+                <input type="text" id="applicationNumber" name="applicationNumber">
+
+                <input type="button" value="Validate Certificate" onclick="validateCertificate()">
+            </form>
+
+            <div id="certificateDetails" style="display:none;">
+                <h3>Your Certificate Details</h3>
+                <p><strong>Name:</strong> <span id="validatedName"></span></p>
+                <p><strong>Course:</strong> <span id="validatedCourse"></span></p>
+                <p><strong>Session:</strong> <span id="validatedYear"></span></p>
+
+                <!-- QR Code -->
+                <div id="qrcode"></div>
+            </div>
+        </section>
+
+        <!-- Certificate Template Customization -->
+        <section class="form-container template-selection">
+            <h2>Choose Your Certificate Template</h2>
+            <form action="#">
+                <label for="template">Select Template:</label>
+                <select id="template" name="template">
+                    <option value="template1">Template 1</option>
+                    <option value="template2">Template 2</option>
+                    <option value="template3">Template 3</option>
+                </select>
+                <input type="submit" value="Customize Certificate">
+            </form>
+        </section>
+    </div>
+
+    <script>
+        // Sample Data for Results
+        const courseData = {
+            "php": {
+                "2024": [
+                    { name: "Sharique", session: "2024-2028", course: "PhD in Computer Science" },
+                    { name: "Adeel", session: "2024-2028", course: "PhD in Computer Science" },
+                ],
+                "2025": [
+                    { name: "Ali", session: "2025-2029", course: "PhD in Computer Science" },
+                ]
+            },
+            "data_science": {
+                "2024": [
+                    { name: "John", session: "2024-2026", course: "MSc Data Science" },
+                    { name: "Sara", session: "2024-2026", course: "MSc Data Science" },
+                ]
+            },
+            // Add more courses as needed...
+        };
+
+        // Function to view results based on selected course and year
+        function viewResults() {
+            const course = document.getElementById("course").value;
+            const year = document.getElementById("year").value;
+
+            // Display the selected course and year
+            document.getElementById("selectedCourse").textContent = course.charAt(0).toUpperCase() + course.slice(1);
+            document.getElementById("selectedYear").textContent = year;
+
+            // Fetch and display the data from courseData object
+            const results = courseData[course] && courseData[course][year] ? courseData[course][year] : [];
+
+            // Clear previous results
+            const resultsTableBody = document.getElementById("resultsTableBody");
+            resultsTableBody.innerHTML = "";
+
+            // If there are results, show them in the table
+            if (results.length > 0) {
+                results.forEach(result => {
+                    const row = document.createElement("tr");
+                    row.innerHTML = `<td>${result.name}</td><td>${result.session}</td><td>${result.course}</td>`;
+                    resultsTableBody.appendChild(row);
+                });
+
+                document.getElementById("resultsTable").style.display = "block";
+            } else {
+                document.getElementById("resultsTable").style.display = "none";
+                alert("No results found for this course and year.");
+            }
+        }
+
+        // Sample Data for Certificate Validation (Application Number and Mobile Number)
+        const validationData = {
+            "PHD-2025-28-01": { name: "Md Sharique", course: "PhD in Computer Science", year: "2025-2028" },
+            "9128861174": { name: "Md Sharique", course: "PhD in Computer Science", year: "2025-2028" },
+            // Add more application numbers or mobile numbers as needed...
+        };
+
+        // Function to validate certificate using application number or mobile number
+        function validateCertificate() {
+            const applicationNumber = document.getElementById("applicationNumber").value;
+
+            // Fetch data from validationData object based on application number or mobile number
+            const certificate = validationData[applicationNumber];
+
+            if (certificate) {
+                // Display certificate details
+                document.getElementById("validatedName").textContent = certificate.name;
+                document.getElementById("validatedCourse").textContent = certificate.course;
+                document.getElementById("validatedYear").textContent = certificate.year;
+
+                // Show the certificate details section
+                document.getElementById("certificateDetails").style.display = "block";
+
+                // Generate QR Code
+                document.getElementById("qrcode").innerHTML = "";
+                $("#qrcode").qrcode({
+                    text: `Name: ${certificate.name}, Course: ${certificate.course}, Session: ${certificate.year}`
+                });
+            } else {
+                alert("Invalid Application Number or Mobile Number.");
+            }
+        }
+    </script>
+
+</body>
+</html>
